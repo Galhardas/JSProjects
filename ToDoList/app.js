@@ -2,7 +2,8 @@ const Form = document.getElementById("todo-form");
 const Input = document.getElementById("todo-input");
 const ToDoList = document.getElementById("todo-list");
 
-let allListItems = [];
+let allListItems = getListLocal();
+updateList();
 
 Form.addEventListener('submit', function(e){
     e.preventDefault();
@@ -15,6 +16,7 @@ function addItem(){
     if(itemText.length > 0){
         allListItems.push({ text: itemText, done: false });;
         updateList();
+        saveListLocal();
         Input.value = '';
     }
 
@@ -27,6 +29,16 @@ function updateList(){
         listItem = createItem(item, itemIndex, item.done);
         ToDoList.append(listItem);
     })
+}
+
+function saveListLocal() {
+    const allListItemsJSON = JSON.stringify(allListItems);
+    localStorage.setItem("TaskList", allListItemsJSON);
+}
+
+function getListLocal() {
+    LocalItems = localStorage.getItem("TaskList") || "[]";
+    return JSON.parse(LocalItems);
 }
 
 function createItem(item, itemIndex, isDone){
@@ -55,6 +67,7 @@ function createItem(item, itemIndex, isDone){
         doneButton.addEventListener('click', () => {
             item.done = true;
             updateList();
+            saveListLocal()
         })
     
     return listItem;
