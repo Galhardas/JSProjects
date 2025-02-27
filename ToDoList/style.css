@@ -1,0 +1,88 @@
+:root{        /* Definir cor/valor para as variaveis */
+    --background-color: #000000;
+    --primary-color: #1e32e0e2;
+    --border-color: #4e5157df;
+    --text-color: #ffffff;
+}
+
+*{            /* Todos os padding e margin a 0 */
+    padding: 0;
+    margin: 0;
+}
+
+html{
+    font-family: 'Helvetica';
+    font-size: 30px;
+    color: var(--text-color);
+}
+
+body{
+    min-height: 100vh;
+    padding: 10px;
+    background-color: var(--background-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1{
+    margin-top: 50px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: 800;
+    color: var(--primary-color);
+}
+
+.wrapper{
+    width: 700px;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.todo-input{
+    box-sizing: border-box;
+    border: 2px solid var(--border-color);
+    border-radius: 15px;
+    padding: 10px 20px;
+    width: 100%;
+    font: inherit;
+    color: #000000;
+}
+
+form{
+    position: relative;
+}
+
+.button-add{
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    box-sizing: border-box;
+    border: 2px solid var(--border-color);
+    border-radius: 15px;
+    height: 100%;
+    padding: 0 30px;
+    font: inherit;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    cursor: pointer;
+}
+
+.todo{
+    position: relative;
+
+    border: 2px solid var(--border-color);
+    border-radius: 15px;
+    margin: 5px 10px;
+    display: flex;
+    align-items: center;
+}
+
+.button-delete{
+    position: absolute;
+    top: 50;
+    right: 0;
+}

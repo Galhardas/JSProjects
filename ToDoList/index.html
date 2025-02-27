@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="style.css">     <!-- Connecting this HTML to styles.css -->
+    <script src="app.js" defer></script>         <!-- Connect to JavaScript app.js and defer to not run until html is fullt loaded -->
+
+    <title>To Do App</title>
+</head>
+<body>
+    <h1>To Do App</h1>
+
+    <div class="wrapper">  <!-- class wrapper to be responsive? -->
+        <form id="todo-form">
+            <input id="todo-input" class="todo-input" type="text" placeholder="Type What You Need To Do" autocomplete="off">
+            <button class="button-add">Add Task</button>
+        </form>
+        <ul id="todo-list" class="todo-list">
+        </ul>
+    </div>
+</body>
+</html>
