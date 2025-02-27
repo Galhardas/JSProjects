@@ -98,9 +98,11 @@ ul {
     align-items: center;
     width: 100%;
     height: 2.5rem;
-    font: inherit ;
+    font: inherit;
     margin: 0.5rem 0rem;
     background-color: #12eb24;
+    text-decoration: line-through;
+    color: grey;
 }
 
 .button-delete{
