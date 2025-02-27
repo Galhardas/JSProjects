@@ -17,6 +17,7 @@ function addItem(){
         updateList();
         Input.value = '';
     }
+
 }
 
 function updateList(){
@@ -43,6 +44,11 @@ function createItem(itemText, itemIndex){
         deleteButton.addEventListener('click', () => {
             allListItems.splice(itemIndex, 1);
             updateList();
+        })
+
+        const doneButton = listItem.querySelector(".button-done");
+        doneButton.addEventListener('click', () => {
+            listItem.classList.toggle("done");
         })
     
     return listItem;

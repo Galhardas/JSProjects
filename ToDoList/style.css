@@ -87,6 +87,20 @@ ul {
     height: 2.5rem;
     font: inherit;
     margin: 0.5rem 0rem;
+    background-color: #ffffff;
+}
+
+.done{
+    border: 2px solid var(--border-color);
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 2.5rem;
+    font: inherit ;
+    margin: 0.5rem 0rem;
+    background-color: #12eb24;
 }
 
 .button-delete{
