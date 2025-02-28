@@ -24,6 +24,7 @@ class Calculator {
     chooseOperation (operator) {
         this.previousOperandText.innerText = this.currentOperand.toString() + ' ' + operator.toString()
         this.currentOperandText.innerText = ''
+        this.currentOperand = ''
     }
 }
 
