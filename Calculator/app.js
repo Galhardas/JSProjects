@@ -18,6 +18,12 @@ class Calculator {
 
     updateDisplay () {
         this.currentOperandText.innerText = this.currentOperand
+        this.previousOperandText.innerHTML = this.previousOperand
+    }
+
+    chooseOperation (operator) {
+        this.previousOperandText.innerText = this.currentOperand.toString() + ' ' + operator.toString()
+        this.currentOperandText.innerText = ''
     }
 }
 
@@ -42,4 +48,10 @@ numberButtons.forEach(button => {
 allClearButton.addEventListener('click', () => {
     calculator.allClear()
     calculator.updateDisplay()
+})
+
+operandButton.forEach(button => {
+    button.addEventListener('click', () => {
+        calculator.chooseOperation(button.innerText)
+    })
 })
