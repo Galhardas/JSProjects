@@ -12,7 +12,8 @@ class Calculator {
     }
 
     appendNumber(number) {
-        this.currentOperand = this.currentOperand.toString() + this.number.toString()
+        if (number === '.' && this.currentOperand.includes('.')) return
+        this.currentOperand = this.currentOperand.toString() + number.toString()
     }
 
     updateDisplay () {
@@ -36,4 +37,9 @@ numberButtons.forEach(button => {
         calculator.appendNumber(button.innerHTML)
         calculator.updateDisplay()
     })
+})
+
+allClearButton.addEventListener('click', () => {
+    calculator.allClear()
+    calculator.updateDisplay()
 })
