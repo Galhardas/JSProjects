@@ -39,7 +39,7 @@ class Calculator {
     }
 
     calculate () {
-        if (this.currentOperand === '' || this.previousOperand === '') return
+        if (this.currentOperand === '' || this.previousOperand === '' || !this.previousOperand.includes(this.operator)) return
         const numOne = Number(this.previousOperand.slice(0, -2))
         const numTwo = Number(this.currentOperand)
         let result 
@@ -56,7 +56,7 @@ class Calculator {
         }
 
         this.currentOperand = ''
-        this.previousOperand = result
+        this.previousOperand = result.toString()
     }
 }
 
