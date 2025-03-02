@@ -29,12 +29,19 @@ class Calculator {
             this.previousOperand = this.currentOperand.toString() + ' ' + operator.toString()
             this.currentOperandText.innerText = ''
             this.currentOperand = ''
+            this.operator = operator
     }
 
     delete () {
         if (this.currentOperand !== '')
             this.currentOperand = this.currentOperand.toString()
             this.currentOperand = this.currentOperand.slice(0, -1)
+    }
+
+    equal () {
+        if (this.currentOperand === '' || this.previousOperand === '') return
+        this.parcelOne = Number(this.previousOperand.slice(0, -2))
+        this.parcelTwo = Number(this.currentOperand)
     }
 }
 
@@ -70,4 +77,8 @@ allClearButton.addEventListener('click', () => {
 deleteButton.addEventListener('click', () => {
     calculator.delete()
     calculator.updateDisplay()
+})
+
+equalButton.addEventListener('click', () => {
+    calculator.equal()
 })
