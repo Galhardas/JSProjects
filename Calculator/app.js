@@ -38,10 +38,25 @@ class Calculator {
             this.currentOperand = this.currentOperand.slice(0, -1)
     }
 
-    equal () {
+    calculate () {
         if (this.currentOperand === '' || this.previousOperand === '') return
-        this.parcelOne = Number(this.previousOperand.slice(0, -2))
-        this.parcelTwo = Number(this.currentOperand)
+        const numOne = Number(this.previousOperand.slice(0, -2))
+        const numTwo = Number(this.currentOperand)
+        let result 
+
+        switch (this.operator) {
+            case '+':
+                result = numOne + numTwo; break
+            case '-':
+                result = numOne - numTwo; break
+            case '*':
+                result = numOne * numTwo; break
+            case '÷':
+                result = numOne !== 0 ? numOne / numTwo : 'Error'; break
+        }
+
+        this.currentOperand = ''
+        this.previousOperand = result
     }
 }
 
@@ -80,5 +95,6 @@ deleteButton.addEventListener('click', () => {
 })
 
 equalButton.addEventListener('click', () => {
-    calculator.equal()
+    calculator.calculate()
+    calculator.updateDisplay()
 })
