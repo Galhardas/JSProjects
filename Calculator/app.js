@@ -22,9 +22,19 @@ class Calculator {
     }
 
     chooseOperation (operator) {
-        this.previousOperandText.innerText = this.currentOperand.toString() + ' ' + operator.toString()
-        this.currentOperandText.innerText = ''
-        this.currentOperand = ''
+        if (this.currentOperand === '')
+            return
+        else
+            this.previousOperandText.innerText = this.currentOperand.toString() + ' ' + operator.toString()
+            this.previousOperand = this.currentOperand.toString() + ' ' + operator.toString()
+            this.currentOperandText.innerText = ''
+            this.currentOperand = ''
+    }
+
+    delete () {
+        if (this.currentOperand !== '')
+            this.currentOperand = this.currentOperand.toString()
+            this.currentOperand = this.currentOperand.slice(0, -1)
     }
 }
 
@@ -46,13 +56,18 @@ numberButtons.forEach(button => {
     })
 })
 
+operandButton.forEach(button => {
+    button.addEventListener('click', () => {
+        calculator.chooseOperation(button.innerText)
+    })
+})
+
 allClearButton.addEventListener('click', () => {
     calculator.allClear()
     calculator.updateDisplay()
 })
 
-operandButton.forEach(button => {
-    button.addEventListener('click', () => {
-        calculator.chooseOperation(button.innerText)
-    })
+deleteButton.addEventListener('click', () => {
+    calculator.delete()
+    calculator.updateDisplay()
 })
