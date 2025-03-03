@@ -55,8 +55,8 @@ class Calculator {
                 result = numOne !== 0 ? numOne / numTwo : 'Error'; break
         }
 
-        this.currentOperand = ''
-        this.previousOperand = result.toString()
+        this.currentOperand = result.toString()
+        this.previousOperand = ''
     }
 }
 
