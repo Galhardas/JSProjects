@@ -8,6 +8,9 @@
 		},
 		{
 			"path": "ToDoList"
+		},
+		{
+			"path": "RealTimeChatApp"
 		}
 	]
 }
