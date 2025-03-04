@@ -61,6 +61,9 @@ class Calculator {
         this.currentOperand = result.toString()
         this.previousOperand = ''
         this.latestResult = `${numOne} ${this.operator} ${numTwo} = ${result}`
+    
+        calculator.updateDisplay()
+        this.currentOperand = ''
     }
 }
 
@@ -101,5 +104,4 @@ deleteButton.addEventListener('click', () => {
 
 equalButton.addEventListener('click', () => {
     calculator.calculate()
-    calculator.updateDisplay()
 })
