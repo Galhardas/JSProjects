@@ -47,10 +47,10 @@ body {
     grid-column: span 2;
 }
 
-.output {
+.output-grid {
     display: flex;
-    flex-direction: column;
-    align-items: flex-end;
+    flex-direction: row;
+    align-items: center;
     justify-content: space-between;
     grid-column: 1 / -1;
     background-color: #000000cd;
@@ -59,14 +59,32 @@ body {
     border-radius: 5px;
 }
 
+.latest-result {
+    width: 50%;
+    height: 100%;
+    border: 0.15rem solid #ffffff;
+}
+
+.output {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+    border: 0.15rem solid #ffffff;
+}
+
 .output > .upper-output {
     color: #ffffffc7;
     font-size: 1.2rem;
+    border: 0.05rem solid #ffffff;
 }
 
 .output > .lower-output {
     color: #ffffff;
     font-size: 2rem;
+    border: 0.05rem solid #ffffff;
 }
 
 /* Media Queries for Responsiveness */
