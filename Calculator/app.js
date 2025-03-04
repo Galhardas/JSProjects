@@ -1,13 +1,15 @@
 class Calculator {
-    constructor(previousOperandText, currentOperandText) {
+    constructor(previousOperandText, currentOperandText, latestResultText) {
         this.previousOperandText = previousOperandText
         this.currentOperandText = currentOperandText
+        this.latestResultText = latestResultText
         this.allClear()
     }
 
     allClear() {
         this.previousOperand = ''
         this.currentOperand = ''
+        this.latestResult = ''
         this.operation = undefined
     }
 
@@ -19,6 +21,7 @@ class Calculator {
     updateDisplay () {
         this.currentOperandText.innerText = this.currentOperand
         this.previousOperandText.innerHTML = this.previousOperand
+        this.latestResultText.innerHTML = this.latestResult
     }
 
     chooseOperation (operator) {
@@ -57,6 +60,7 @@ class Calculator {
 
         this.currentOperand = result.toString()
         this.previousOperand = ''
+        this.latestResult = `${numOne} ${this.operator} ${numTwo} = ${result}`
     }
 }
 
@@ -66,10 +70,11 @@ const allClearButton = document.querySelector('[data-all-clear]')
 const deleteButton = document.querySelector('[data-delete]')
 const equalButton = document.querySelector('[data-equal]')
 
+const latestResultText = document.querySelector('[data-latest-result]')
 const previousOperandText = document.querySelector('[data-upper-output]')
 const currentOperandText = document.querySelector('[data-lower-output]')
 
-const calculator = new Calculator(previousOperandText, currentOperandText)
+const calculator = new Calculator(previousOperandText, currentOperandText, latestResultText)
 
 numberButtons.forEach(button => {
     button.addEventListener('click', () => {
