@@ -46,9 +46,9 @@ function createItem(item, itemIndex, isDone){
     const listItemID = "todo-"+itemIndex;
 
     if (isDone) {
-        listItem.classList.add("done");
+        listItem.classList.add("Done");
     } else {
-        listItem.classList.add("todo");
+        listItem.classList.add("ToDo");
     }
     
     listItem.innerHTML = `
@@ -61,6 +61,7 @@ function createItem(item, itemIndex, isDone){
         deleteButton.addEventListener('click', () => {
             allListItems.splice(itemIndex, 1);
             updateList();
+            saveListLocal();
         })
 
         const doneButton = listItem.querySelector(".button-done");
