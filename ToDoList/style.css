@@ -32,6 +32,7 @@ h1{
 
 form{
     position: relative;
+    margin-bottom: 1rem;
 }
 
 ul{
@@ -44,6 +45,10 @@ ul{
 
 li{
     position: relative;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .wrapper{
@@ -52,7 +57,6 @@ li{
     display: flex;
     flex-direction: column;
     align-content: center;
-    gap: 10px;
 }
 
 .todo-input{
@@ -115,6 +119,7 @@ li{
     right: 0;
     border-radius: 15px;
     height: 2.5rem;
+    cursor: pointer;
 }
 
 .button-done{
@@ -124,4 +129,5 @@ li{
     border-radius: 15px;
     height: 2.5rem;
     width: 5rem;
+    cursor: pointer;
 }

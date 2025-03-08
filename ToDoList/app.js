@@ -19,7 +19,6 @@ function addItem(){
         saveListLocal();
         Input.value = '';
     }
-
 }
 
 function updateList(){
@@ -68,7 +67,6 @@ function createItem(item, itemIndex, isDone){
         doneButton.addEventListener('click', () => {
             item.done = true;
             updateList();
-            saveListLocal()
         })
     
     return listItem;
