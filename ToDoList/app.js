@@ -45,9 +45,9 @@ function createItem(item, itemIndex, isDone){
     const listItemID = "todo-"+itemIndex;
 
     if (isDone) {
-        listItem.classList.add("Done");
+        listItem.classList.add("done");
     } else {
-        listItem.classList.add("ToDo");
+        listItem.classList.add("todo");
     }
     
     listItem.innerHTML = `
