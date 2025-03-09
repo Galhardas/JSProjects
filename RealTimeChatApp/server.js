@@ -70,7 +70,6 @@ const io = new Server(server);
 // Socket.IO connection handler
 io.on('connection', (socket) => {
     console.log('A user connected');
-    socket.emit('chat-message', 'Hello World');
 });
 
 // Start the server on port 2025
