@@ -9,10 +9,13 @@ const io = new Server(server);
 // Serve static files (index.html, style.css, app.js)
 app.use(express.static(__dirname));
 
-io.on("connection", (socket) => {
+io.on("connection", socket => {  
     console.log("A user connected");
-    socket.emit("chat-message", "Hello World");
-});
+    socket.on('send-chat-message', message => {
+        console.log(message)
+        socket.broadcast.emit('chat-message', message)
+    })
+})
 
 // Start server
 server.listen(2025, () => {
