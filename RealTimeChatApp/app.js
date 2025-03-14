@@ -21,8 +21,9 @@ socket.on('chat-message', (message) => {
 // Handle form submission
 messageForm.addEventListener('submit', (e) => {
     e.preventDefault(); // Prevent the form from submitting
-    const message = messageInput.value; // Get the message from the input field
+    let message = messageInput.value; // Get the message from the input field
     if (message.trim()) { // Check if the message is not empty
+        message = `${name}: ${message}`; // Prepend the name to the message
         socket.emit('send-chat-message', message); // Send the message to the server
         messageInput.value = ''; // Clear the input field
     }
