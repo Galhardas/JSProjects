@@ -11,7 +11,7 @@ function writeChatMessage(message) {
 }
 
 const name = prompt('Who are you?')
-writeChatMessage('You Joined')
+writeChatMessage(`${name} Joined`)
 socket.emit('user-joined', name)
 
 // Listen for incoming chat messages
