@@ -101,6 +101,7 @@ body {
     font-size: 0.9em; /* Smaller font size */
     max-width: 70%; /* Limit width */
     margin: 5px 0; /* Add some margin */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
 }
 
 .my-message {
