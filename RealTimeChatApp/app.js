@@ -12,7 +12,7 @@ function writeChatMessage(message, isSystemMessage = false, msgSender) {
     if (isSystemMessage) {
         chatMessageText.classList.add('system-message');
     } else {
-        if (msgSender === name){
+        if (msgSender === socket.id){
             chatMessageText.classList.add('my-message');
         } else {
             chatMessageText.classList.add('others-message');
@@ -43,7 +43,7 @@ messageForm.addEventListener('submit', (e) => {
     const message = messageInput.value; // Get the message from the input field
     if (message.trim()) { // Check if the message is not empty
         const formattedMessage = `${name}: ${message}`; // Prepend the name to the message
-        socket.emit('send-chat-message', formattedMessage, name); // Send the message to the server
+        socket.emit('send-chat-message', formattedMessage, socket.id); // Send the message to the server
         messageInput.value = ''; // Clear the input field
     }
 });
