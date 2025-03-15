@@ -60,12 +60,21 @@ const io = new Server(server);
 
 // Socket.IO connection handler
 io.on('connection', (socket) => {
-    socket.on('user-joined', name => {
-        
-    })
+    // Handle user joining the chat
+    socket.on('user-joined', (name) => {
+        const joinMessage = `${name} Joined`;
+        io.emit('chat-message', joinMessage, true); // Broadcast join message as a system message
+    });
+
     // Handle incoming chat messages
     socket.on('send-chat-message', (message) => {
-        io.emit('chat-message', message); // Broadcast the message to all clients
+        io.emit('chat-message', message, false); // Broadcast regular message
+    });
+
+    // Handle user leaving the chat
+    socket.on('user-left', (name) => {
+        const leaveMessage = `${name} Left`;
+        io.emit('chat-message', leaveMessage, true); // Broadcast leave message as a system message
     });
 });
 

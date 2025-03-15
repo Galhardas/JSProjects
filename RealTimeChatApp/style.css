@@ -90,3 +90,24 @@ body {
     max-width: 70%;
     word-wrap: break-word;
 }
+
+.system-message {
+    align-self: center; /* Center the message horizontally */
+    text-align: center; /* Center the text inside the message */
+    background-color: #e0e0e0; /* Light grey background */
+    color: #555; /* Dark grey text color */
+    padding: 5px 10px; /* Smaller padding */
+    border-radius: 10px; /* Rounded corners */
+    font-size: 0.9em; /* Smaller font size */
+    max-width: 70%; /* Limit width */
+    margin: 5px 0; /* Add some margin */
+}
+
+/* Regular messages */
+.message {
+    max-width: 70%;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 5px;
+    word-wrap: break-word;
+}

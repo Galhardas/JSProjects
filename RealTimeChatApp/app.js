@@ -4,27 +4,49 @@ const messageForm = document.getElementById('message-form');
 const messageInput = document.getElementById('message-input');
 const messageSend = document.getElementById('message-send');
 
-function writeChatMessage(message) {
+// Function to display messages in the chat box
+function writeChatMessage(message, isSystemMessage = false) {
     const chatMessageText = document.createElement('div'); // Create a new div
-    chatMessageText.innerHTML = message; // Set the message content
+    chatMessageText.textContent = message; // Use textContent to avoid XSS
+
+    if (isSystemMessage) {
+        // Apply system message styling
+        chatMessageText.classList.add('system-message');
+    } else {
+        // Apply regular message styling
+        chatMessageText.classList.add('message');
+    }
+
     chatBox.append(chatMessageText); // Append the new div to the chat box
+    chatBox.scrollTop = chatBox.scrollHeight; // Scroll to the bottom
 }
 
-const name = prompt('Who are you?')
-socket.emit('send-chat-message', `${name} Joined`);
+// Prompt for the user's name
+let name = prompt('Who are you?');
+if (!name || name.trim() === '') {
+    name = 'Anonymous'; // Default name if the user cancels or enters nothing
+}
+
+// Notify the server that a user has joined
+socket.emit('user-joined', name);
 
 // Listen for incoming chat messages
-socket.on('chat-message', (message) => {
-    writeChatMessage(message); // Display the message in the chat box
+socket.on('chat-message', (message, isSystemMessage) => {
+    writeChatMessage(message, isSystemMessage); // Display the message
 });
 
 // Handle form submission
 messageForm.addEventListener('submit', (e) => {
     e.preventDefault(); // Prevent the form from submitting
-    let message = messageInput.value; // Get the message from the input field
+    const message = messageInput.value; // Get the message from the input field
     if (message.trim()) { // Check if the message is not empty
-        message = `${name}: ${message}`; // Prepend the name to the message
-        socket.emit('send-chat-message', message); // Send the message to the server
+        const formattedMessage = `${name}: ${message}`; // Prepend the name to the message
+        socket.emit('send-chat-message', formattedMessage); // Send the message to the server
         messageInput.value = ''; // Clear the input field
     }
+});
+
+// Notify when the user leaves
+window.addEventListener('beforeunload', () => {
+    socket.emit('user-left', name); // Notify the server that the user is leaving
 });
