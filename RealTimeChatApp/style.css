@@ -1,36 +1,92 @@
-*, *::before, *::after{
+/* Global reset and base styles */
+*, *::before, *::after {
     box-sizing: border-box;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-weight: normal;
+    margin: 0;
+    padding: 0;
 }
 
-body{
-    padding: 0;
-    margin: 0;
-
+/* Body styling */
+body {
     background-color: white;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
 }
 
+/* Chat box styling */
 #chat-box {
-    height: 90vh;
+    width: 90vw;
+    height: 80vh;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 10px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: #f9f9f9;
 }
 
+/* Message form styling */
 #message-form {
     display: flex;
     flex-direction: row;
     align-items: center;
     width: 90vw;
+    gap: 10px;
+    margin-top: 10px;
 }
 
+/* Input field styling */
 #message-input {
     width: 75vw;
+    padding: 10px;
+    border: 1px solid #ccc;
     border-radius: 15px;
+    font-size: 16px;
+    outline: none;
 }
 
+/* Send button styling */
 #message-send {
     width: 15vw;
+    padding: 10px;
+    border: none;
     border-radius: 15px;
+    background-color: #007bff;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#message-send:hover {
+    background-color: #0056b3;
+}
+
+/* Styling for your messages (aligned to the right) */
+.my-message {
+    align-self: flex-end;
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 70%;
+    word-wrap: break-word;
+}
+
+/* Styling for others' messages (aligned to the left) */
+.other-message {
+    align-self: flex-start;
+    background-color: #f1f1f1;
+    color: black;
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 70%;
+    word-wrap: break-word;
 }
