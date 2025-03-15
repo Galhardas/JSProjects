@@ -5,16 +5,18 @@ const messageInput = document.getElementById('message-input');
 const messageSend = document.getElementById('message-send');
 
 // Function to display messages in the chat box
-function writeChatMessage(message, isSystemMessage = false) {
+function writeChatMessage(message, isSystemMessage = false, isMyMessage) {
     const chatMessageText = document.createElement('div'); // Create a new div
     chatMessageText.textContent = message; // Use textContent to avoid XSS
 
     if (isSystemMessage) {
-        // Apply system message styling
         chatMessageText.classList.add('system-message');
     } else {
-        // Apply regular message styling
-        chatMessageText.classList.add('message');
+        if (isMyMessage){
+            chatMessageText.classList.add('my-message');
+        } else {
+            chatMessageText.classList.add('others-message');
+        }
     }
 
     chatBox.append(chatMessageText); // Append the new div to the chat box
@@ -31,8 +33,8 @@ if (!name || name.trim() === '') {
 socket.emit('user-joined', name);
 
 // Listen for incoming chat messages
-socket.on('chat-message', (message, isSystemMessage) => {
-    writeChatMessage(message, isSystemMessage); // Display the message
+socket.on('chat-message', (message, isSystemMessage, isMyMessage) => {
+    writeChatMessage(message, isSystemMessage, isMyMessage); // Display the message
 });
 
 // Handle form submission

@@ -103,8 +103,17 @@ body {
     margin: 5px 0; /* Add some margin */
 }
 
-/* Regular messages */
-.message {
+.my-message {
+    background-color: green;
+    max-width: 70%;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 5px;
+    word-wrap: break-word;
+}
+
+.others-message {
+    background-color: red;
     max-width: 70%;
     border: 1px solid #ccc;
     border-radius: 10px;

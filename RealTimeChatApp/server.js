@@ -63,7 +63,7 @@ io.on('connection', (socket) => {
     // Handle user joining the chat
     socket.on('user-joined', (name) => {
         const joinMessage = `${name} Joined`;
-        io.emit('chat-message', joinMessage, true); // Broadcast join message as a system message
+        io.emit('chat-message', joinMessage, true, false); // Broadcast join message as a system message
     });
 
     // Handle incoming chat messages
@@ -74,7 +74,7 @@ io.on('connection', (socket) => {
     // Handle user leaving the chat
     socket.on('user-left', (name) => {
         const leaveMessage = `${name} Left`;
-        io.emit('chat-message', leaveMessage, true); // Broadcast leave message as a system message
+        io.emit('chat-message', leaveMessage, true, false); // Broadcast leave message as a system message
     });
 });
 
