@@ -43,7 +43,8 @@ messageForm.addEventListener('submit', (e) => {
     const message = messageInput.value; // Get the message from the input field
     if (message.trim()) { // Check if the message is not empty
         const formattedMessage = `${name}: ${message}`; // Prepend the name to the message
-        socket.emit('send-chat-message', formattedMessage); // Send the message to the server
+        socket.emit('send-chat-message', formattedMessage, false); // Send the message to the server
+        writeChatMessage(formattedMessage, false, true); // Display the message
         messageInput.value = ''; // Clear the input field
     }
 });

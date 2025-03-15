@@ -60,6 +60,8 @@ const io = new Server(server);
 
 // Socket.IO connection handler
 io.on('connection', (socket) => {
+    console.log('A user connected:', socket.id);
+
     // Handle user joining the chat
     socket.on('user-joined', (name) => {
         const joinMessage = `${name} Joined`;
@@ -67,8 +69,8 @@ io.on('connection', (socket) => {
     });
 
     // Handle incoming chat messages
-    socket.on('send-chat-message', (message) => {
-        io.emit('chat-message', message, false); // Broadcast regular message
+    socket.on('send-chat-message', (message, isMyMessage) => {
+        io.emit('chat-message', message, false, isMyMessage); // Broadcast regular message
     });
 
     // Handle user leaving the chat
