@@ -69,28 +69,6 @@ body {
     background-color: #0056b3;
 }
 
-/* Styling for your messages (aligned to the right) */
-.my-message {
-    align-self: flex-end;
-    background-color: #007bff;
-    color: white;
-    padding: 10px;
-    border-radius: 10px;
-    max-width: 70%;
-    word-wrap: break-word;
-}
-
-/* Styling for others' messages (aligned to the left) */
-.other-message {
-    align-self: flex-start;
-    background-color: #f1f1f1;
-    color: black;
-    padding: 10px;
-    border-radius: 10px;
-    max-width: 70%;
-    word-wrap: break-word;
-}
-
 .system-message {
     align-self: center; /* Center the message horizontally */
     text-align: center; /* Center the text inside the message */
