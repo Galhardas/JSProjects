@@ -69,8 +69,8 @@ io.on('connection', (socket) => {
     });
 
     // Handle incoming chat messages
-    socket.on('send-chat-message', (message, isMyMessage) => {
-        io.emit('chat-message', message, false, isMyMessage); // Broadcast regular message
+    socket.on('send-chat-message', (message, msgSender) => {
+        io.emit('chat-message', message, false, msgSender); // Broadcast regular message
     });
 
     // Handle user leaving the chat

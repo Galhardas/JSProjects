@@ -5,14 +5,14 @@ const messageInput = document.getElementById('message-input');
 const messageSend = document.getElementById('message-send');
 
 // Function to display messages in the chat box
-function writeChatMessage(message, isSystemMessage = false, isMyMessage) {
+function writeChatMessage(message, isSystemMessage = false, msgSender) {
     const chatMessageText = document.createElement('div'); // Create a new div
     chatMessageText.textContent = message; // Use textContent to avoid XSS
 
     if (isSystemMessage) {
         chatMessageText.classList.add('system-message');
     } else {
-        if (isMyMessage){
+        if (msgSender === name){
             chatMessageText.classList.add('my-message');
         } else {
             chatMessageText.classList.add('others-message');
@@ -33,8 +33,8 @@ if (!name || name.trim() === '') {
 socket.emit('user-joined', name);
 
 // Listen for incoming chat messages
-socket.on('chat-message', (message, isSystemMessage, isMyMessage) => {
-    writeChatMessage(message, isSystemMessage, isMyMessage); // Display the message
+socket.on('chat-message', (message, isSystemMessage, msgSender) => {
+    writeChatMessage(message, isSystemMessage, msgSender); // Display the message
 });
 
 // Handle form submission
@@ -43,8 +43,7 @@ messageForm.addEventListener('submit', (e) => {
     const message = messageInput.value; // Get the message from the input field
     if (message.trim()) { // Check if the message is not empty
         const formattedMessage = `${name}: ${message}`; // Prepend the name to the message
-        socket.emit('send-chat-message', formattedMessage, false); // Send the message to the server
-        writeChatMessage(formattedMessage, false, true); // Display the message
+        socket.emit('send-chat-message', formattedMessage, name); // Send the message to the server
         messageInput.value = ''; // Clear the input field
     }
 });
